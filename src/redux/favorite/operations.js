@@ -1,6 +1,6 @@
 import { get, getDatabase, onValue, ref, set } from "firebase/database";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { database } from "../../firebase/config";
+import { setFavorites } from "./favoriteSlice";
 
 const db = getDatabase();
 
@@ -8,7 +8,7 @@ export const addFavorites = createAsyncThunk(
   "favorites/addFavorite",
   async ({ userId, teacher }) => {
     try {
-      const userFavoritesRef = ref(database, `users/${userId}/favorites`);
+      const userFavoritesRef = ref(db, `users/${userId}/favorites`);
       const existingFavorites = (await get(userFavoritesRef)).val() || {};
       const updatedFavorites = {
         ...existingFavorites,
@@ -26,7 +26,7 @@ export const fetchFavorites = createAsyncThunk(
   "favorites/fetchFavorites",
   async (userId, { dispatch }) => {
     try {
-      const userFavoritesRef = ref(database, `users/${userId}/favorites`);
+      const userFavoritesRef = ref(db, `users/${userId}/favorites`);
       onValue(userFavoritesRef, (snapshot) => {
         if (snapshot.exists()) {
           const favoritesData = snapshot.val();
@@ -47,7 +47,7 @@ export const deleteFavorite = createAsyncThunk(
   "favorites/deleteFavorite",
   async ({ userId, teacherId }) => {
     try {
-      const userFavoritesRef = ref(database, `users/${userId}/favorites`);
+      const userFavoritesRef = ref(db, `users/${userId}/favorites`);
       const existingFavorites = (await get(userFavoritesRef)).val() || {};
       delete existingFavorites[teacherId];
       await set(userFavoritesRef, existingFavorites);
