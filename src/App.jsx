@@ -9,7 +9,7 @@ import { useState } from "react";
 import { PrivateRoute } from "./components/navigation/PrivateRoute";
 
 function App() {
-  const [authUser, setAuthUset] = useState(auth.currentUser);
+  const [authUser, setAuthUser] = useState(auth.currentUser);
   return (
     <Routes>
       <Route path="/" element={<Layout authUser={authUser} />}>
