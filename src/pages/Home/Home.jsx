@@ -1,59 +1,79 @@
-import { Link } from "react-router-dom";
 import Girl from "../../img/icons/girl.svg";
 import Mac from "../../img/icons/iMac-yellow.svg";
+import {
+  AdvantagesList,
+  AdvantagesSection,
+  Container,
+  ContentWrapper,
+  CustomLink,
+  HighlightSpan,
+  HighlightedText,
+  ImageContainer,
+  ImageGirl,
+  ImageMac,
+  MainContent,
+  StatItem,
+  StatNumber,
+  StatText,
+  Subtitle,
+  Title,
+} from "./Home.styled";
 
 const Home = () => {
   return (
-    <div>
-      <div>
+    <Container>
+      <MainContent>
         {/* Main body */}
-        <div>
-          <h1>
-            Unlock your potential with the best<span>language</span> tutors
-          </h1>
-          <p>
+        <ContentWrapper>
+          <Title>
+            Unlock your potential with the best{" "}
+            <HighlightSpan>language</HighlightSpan> tutors
+          </Title>
+          <Subtitle>
             Embark on an Exciting Language Journey with Expert Language Tutors:
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
-          </p>
-          <Link to="/teachers">Get started</Link>
-        </div>
+          </Subtitle>
+          <CustomLink to="/teachers">Get started</CustomLink>
+        </ContentWrapper>
 
         {/* Image */}
-        <div>
-          <Girl />
-          <Mac />
-        </div>
-      </div>
-      <div>
-        <ul>
-          <li>
-            <p>32,000 +</p>
-            <p>
-              Experienced <span>tutors</span>
-            </p>
-          </li>
-          <li>
-            <p>300,000 +</p>
-            <p>
-              5-star tutor <span>reviews</span>
-            </p>
-          </li>
-          <li>
-            <p>120 +</p>
-            <p>
-              Subjects <span>taught</span>
-            </p>
-          </li>
-          <li>
-            <p>200 +</p>
-            <p>
-              Tutor <span>nationalities</span>
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <ImageContainer>
+          <ImageGirl src={Girl} alt="logo" />
+          <ImageMac src={Mac} alt="logo" />
+        </ImageContainer>
+      </MainContent>
+
+      {/* Advantages */}
+      <AdvantagesSection>
+        <AdvantagesList>
+          <StatItem>
+            <StatNumber>32,000 +</StatNumber>
+            <StatText>
+              Experienced <HighlightedText>tutors</HighlightedText>
+            </StatText>
+          </StatItem>
+          <StatItem>
+            <StatNumber>300,000 +</StatNumber>
+            <StatText>
+              5-star tutor <HighlightedText>reviews</HighlightedText>
+            </StatText>
+          </StatItem>
+          <StatItem>
+            <StatNumber>120 +</StatNumber>
+            <StatText>
+              Subjects <HighlightedText>taught</HighlightedText>
+            </StatText>
+          </StatItem>
+          <StatItem>
+            <StatNumber>200 +</StatNumber>
+            <StatText>
+              Tutor <HighlightedText>nationalities</HighlightedText>
+            </StatText>
+          </StatItem>
+        </AdvantagesList>
+      </AdvantagesSection>
+    </Container>
   );
 };
 
