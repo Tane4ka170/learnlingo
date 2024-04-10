@@ -52,12 +52,12 @@ const Layout = ({ authUser }) => {
       </Suspense>
       <Toaster position="top-right" reverseOrder={false} />
 
-      {/* {isPanelOpen && (
+      {isPanelOpen && (
         <Modal togglePanel={togglePanel}>
           {isLoginModalOpen && <Login handleClose={handleClose} />}
           {isRegisterModalOpen && <Register handleClose={handleClose} />}
         </Modal>
-      )} */}
+      )}
     </LayoutContainer>
   );
 };
