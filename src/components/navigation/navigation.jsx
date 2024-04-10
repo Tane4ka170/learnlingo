@@ -1,20 +1,24 @@
-// export const Navigation = ({
-//   handleLoginClick,
-//   handleRegisterClick,
-//   authUser,
-// }) => {
-//   return authUser ? (
-//     // <AuthNavOut />
-//   ) : (
-//     // <AuthNavIn
-//     //   onClickLogin={handleLoginClick}
-//     //   onClickRegister={handleRegisterClick}
-//     // />
-//   );
-// };
+import PropTypes from "prop-types";
+import AuthenticatedNav from "./AuthenticatedNav/AuthenticatedNav";
+import UnauthenticatedNav from "./UnauthenticatedNav/UnauthenticatedNav";
 
-import React from "react";
+export const Navigation = ({
+  handleLoginClick,
+  handleRegisterClick,
+  authUser,
+}) => {
+  return authUser ? (
+    <AuthenticatedNav />
+  ) : (
+    <UnauthenticatedNav
+      onClickLogin={handleLoginClick}
+      onClickRegister={handleRegisterClick}
+    />
+  );
+};
 
-export const Navigation = () => {
-  return <div>Nvigation</div>;
+Navigation.propTypes = {
+  handleLoginClick: PropTypes.func.isRequired,
+  handleRegisterClick: PropTypes.func.isRequired,
+  authUser: PropTypes.object.isRequired,
 };
