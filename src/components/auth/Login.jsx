@@ -1,4 +1,18 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { LoginSchema } from "../../yupSchemas/AuthSchemas";
+import toast from "react-hot-toast";
+import { auth } from "../../firebase/config";
+import { Formik } from "formik";
+import {
+  Description,
+  ErrorMessageWrapper,
+  InputField,
+  StyledForm,
+  SubmitButton,
+  Title,
+} from "./Auth.styled";
+import PropTypes from "prop-types";
 
 export const Login = ({ handleClose }) => {
   const [emailEntered, setEmailEntered] = useState(false);
@@ -8,26 +22,21 @@ export const Login = ({ handleClose }) => {
     const { email, password } = values;
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        close();
+      .then(() => {
+        handleClose();
       })
-      .catch((err) => {
-        toast.error(" SORRY, COULDN'T FIND YOUR ACCOUNT");
+      .catch(() => {
+        toast.error("Apologies, we were unable to locate your account");
       });
   };
-
-  const LoginSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Required"),
-    password: Yup.string().min(8, "Too Short!").required("Required"),
-  });
 
   return (
     <div>
       <Title>Log In</Title>
-      <Text>
+      <Description>
         Welcome back! Please enter your credentials to access your account and
         continue your search for an teacher.
-      </Text>
+      </Description>
 
       <Formik
         initialValues={{
@@ -37,27 +46,34 @@ export const Login = ({ handleClose }) => {
         onSubmit={handleSubmit}
         validationSchema={LoginSchema}
       >
-        {({ values, errors, touched, handleChange, handleBlur }) => (
-          <FormStyle>
-            <FieldStyle
+        {({ handleChange, handleBlur }) => (
+          <StyledForm>
+            <InputField
               type="email"
               name="email"
               placeholder={emailEntered ? "" : "Email"}
               onFocus={() => setEmailEntered(true)}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
-            <ErrMsg name="email" component="div" />
-            <FieldStyle
+            <ErrorMessageWrapper name="email" component="div" />
+            <InputField
               type="password"
               name="password"
               placeholder={passwordEntered ? "" : "Password"}
               onFocus={() => setPasswordEntered(true)}
+              onChange={handleChange}
+              onBlur={handleBlur}
             />
-            <ErrMsg name="password" component="div" />
-            <BtnSubmit type="submit">Log in</BtnSubmit>
-          </FormStyle>
+            <ErrorMessageWrapper name="password" component="div" />
+            <SubmitButton type="submit">Log in</SubmitButton>
+          </StyledForm>
         )}
       </Formik>
-      <AuthProvider handleClose={handleClose} />
     </div>
   );
+};
+
+Login.propTypes = {
+  handleClose: PropTypes.func.isRequired,
 };
