@@ -10,8 +10,14 @@ import { Register } from '../auth/Register';
 
 const Layout = ({ authUser }) => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [
+    isLoginModalOpen,
+    // setIsLoginModalOpen
+  ] = useState(false);
+  const [
+    isRegisterModalOpen,
+    // setIsRegisterModalOpen
+  ] = useState(false);
 
   const toggleModal = () => {
     setIsPanelOpen(prevState => !prevState);
