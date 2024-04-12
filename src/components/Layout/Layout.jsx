@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-// import { Navigation } from '../navigation/Navigation';
+import { Navigation } from '../Nav/Navigation';
 import { Header, LayoutContainer, LinkLogo, List, Logo } from './Layout.styled';
 import UkraineLogo from '../../img/icons/ukraine.svg';
 import Modal from '../Modal/Modal';
@@ -10,30 +10,24 @@ import { Register } from '../auth/Register';
 
 const Layout = ({ authUser }) => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [
-    isLoginModalOpen,
-    // setIsLoginModalOpen
-  ] = useState(false);
-  const [
-    isRegisterModalOpen,
-    // setIsRegisterModalOpen
-  ] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const toggleModal = () => {
     setIsPanelOpen(prevState => !prevState);
   };
 
-  // function onClickLogin() {
-  //   setIsRegisterModalOpen(false);
-  //   setIsLoginModalOpen(true);
-  //   toggleModal();
-  // }
+  function onClickLogin() {
+    setIsRegisterModalOpen(false);
+    setIsLoginModalOpen(true);
+    toggleModal();
+  }
 
-  // function handleRegisterClick() {
-  //   setIsLoginModalOpen(false);
-  //   setIsRegisterModalOpen(true);
-  //   toggleModal();
-  // }
+  function handleRegisterClick() {
+    setIsLoginModalOpen(false);
+    setIsRegisterModalOpen(true);
+    toggleModal();
+  }
 
   const handleClose = () => {
     setIsPanelOpen(false);
@@ -52,11 +46,11 @@ const Layout = ({ authUser }) => {
             <LinkLogo to="/">LearnLingo</LinkLogo>
           </li>
         </List>
-        {/* <Navigation
+        <Navigation
           authUser={authUser}
           onClickLogin={onClickLogin}
           handleRegisterClick={handleRegisterClick}
-        /> */}
+        />
       </Header>
       <Suspense>
         <Outlet />

@@ -1,23 +1,23 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 
-import Favorite from "./pages/Favorite/Favorite";
-import Home from "./pages/Home/Home";
-import Teachers from "./pages/Teachers/Teachers";
-import Layout from "./components/Layout/Layout";
-import { auth } from "./firebase/config";
-import { useEffect, useState } from "react";
-import { PrivateRoute } from "./components/navigation/PrivateRoute";
-import { onAuthStateChanged } from "firebase/auth";
+import Favorite from './pages/Favorite/Favorite';
+import Home from './pages/Home/Home';
+import Teachers from './pages/Teachers/Teachers';
+import Layout from './components/Layout/Layout';
+import { auth } from './firebase/config';
+import { useEffect, useState } from 'react';
+import { PrivateRoute } from './components/Nav/PrivateRoute';
+import { onAuthStateChanged } from 'firebase/auth';
 
 function App() {
-  const [authUser, setauthUser] = useState(auth.currentUser);
+  const [authUser, setAuthUser] = useState(auth.currentUser);
 
   useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user) => {
+    const listen = onAuthStateChanged(auth, user => {
       if (user) {
-        setauthUser(user);
+        setAuthUser(user);
       } else {
-        setauthUser(null);
+        setAuthUser(null);
       }
     });
     return () => {

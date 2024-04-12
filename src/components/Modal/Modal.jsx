@@ -1,30 +1,32 @@
-import { useEffect } from "react";
-import { createPortal } from "react-dom";
-import { CloseButton, ModalContainer, ModalContent } from "./Modal.styled";
-import CloseSvg from "../../img/icons/close.svg";
+import React from 'react';
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { CloseButton, ModalContainer, ModalContent } from './Modal.styled';
+import CloseSvg from '../../img/icons/close.svg';
 
-const modalTarget = document.getElementById("portal");
+const modalTarget = document.getElementById('portal');
+console.log(modalTarget);
 
 const Modal = ({ children, toggleModal }) => {
-  const onOverlayClick = (e) => {
+  const onOverlayClick = e => {
     if (e.target === e.currentTarget) {
       toggleModal();
     }
   };
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.code === "Escape") {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
         toggleModal();
       }
     };
-    const body = document.querySelector("body");
-    body.style.position = "fixed";
-    window.addEventListener("keydown", handleKeyDown);
+    const body = document.querySelector('body');
+    body.style.position = 'fixed';
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      body.style.position = "";
-      window.removeEventListener("keydown", handleKeyDown);
+      body.style.position = '';
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [toggleModal]);
 
