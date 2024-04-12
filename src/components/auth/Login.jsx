@@ -1,9 +1,9 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-import { LoginSchema } from "../../yupSchemas/AuthSchemas";
-import toast from "react-hot-toast";
-import { auth } from "../../firebase/config";
-import { Formik } from "formik";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useState } from 'react';
+import { LoginSchema } from '../../yupSchemas/AuthSchemas';
+import toast from 'react-hot-toast';
+import { auth } from '../../firebase/config';
+import { Formik } from 'formik';
 import {
   Description,
   ErrorMessageWrapper,
@@ -11,14 +11,13 @@ import {
   StyledForm,
   SubmitButton,
   Title,
-} from "./Auth.styled";
-import PropTypes from "prop-types";
+} from './Auth.styled';
 
 export const Login = ({ handleClose }) => {
   const [emailEntered, setEmailEntered] = useState(false);
   const [passwordEntered, setPasswordEntered] = useState(false);
 
-  const handleSubmit = (values) => {
+  const handleSubmit = values => {
     const { email, password } = values;
 
     signInWithEmailAndPassword(auth, email, password)
@@ -26,7 +25,7 @@ export const Login = ({ handleClose }) => {
         handleClose();
       })
       .catch(() => {
-        toast.error("Apologies, we were unable to locate your account");
+        toast.error('Apologies, we were unable to locate your account');
       });
   };
 
@@ -40,8 +39,8 @@ export const Login = ({ handleClose }) => {
 
       <Formik
         initialValues={{
-          email: "",
-          password: "",
+          email: '',
+          password: '',
         }}
         onSubmit={handleSubmit}
         validationSchema={LoginSchema}
@@ -51,7 +50,7 @@ export const Login = ({ handleClose }) => {
             <InputField
               type="email"
               name="email"
-              placeholder={emailEntered ? "" : "Email"}
+              placeholder={emailEntered ? '' : 'Email'}
               onFocus={() => setEmailEntered(true)}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -60,7 +59,7 @@ export const Login = ({ handleClose }) => {
             <InputField
               type="password"
               name="password"
-              placeholder={passwordEntered ? "" : "Password"}
+              placeholder={passwordEntered ? '' : 'Password'}
               onFocus={() => setPasswordEntered(true)}
               onChange={handleChange}
               onBlur={handleBlur}

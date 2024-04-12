@@ -69,17 +69,11 @@ const Card = ({ teacher, authUser }) => {
           <p>Languages</p>
           <ul>
             <li>
-              <div>
-                {' '}
-                <Book /> Lessons online
-              </div>
+              <div> {/* <Book /> Lessons online */}</div>
             </li>
             <li>Lessons done: {teacher.lessons_done}</li>
             <li>
-              <div>
-                {' '}
-                <Star /> Rating: {teacher.rating}
-              </div>
+              <div> {/* <Star /> Rating: {teacher.rating} */}</div>
             </li>
             <li>
               Price / 1 hour: <span>{teacher.price_per_hour}$</span>
@@ -87,7 +81,7 @@ const Card = ({ teacher, authUser }) => {
             <li>
               {' '}
               <button type="button" onClick={onSwitchFavorite}>
-                {isFavorite && authUser ? <HeartDel /> : <Heart />}
+                {/* {isFavorite && authUser ? <HeartDel /> : <Heart />} */}
               </button>
             </li>
           </ul>
@@ -140,7 +134,7 @@ const Card = ({ teacher, authUser }) => {
                       <div>
                         <p>{review.reviewer_name}</p>
                         <div>
-                          <Star />
+                          {/* <Star /> */}
                           <p> {review.reviewer_rating}</p>
                         </div>
                       </div>
