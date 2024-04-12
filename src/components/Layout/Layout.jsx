@@ -17,17 +17,17 @@ const Layout = ({ authUser }) => {
     setIsPanelOpen(prevState => !prevState);
   };
 
-  function onClickLogin() {
-    setIsRegisterModalOpen(false);
-    setIsLoginModalOpen(true);
-    toggleModal();
-  }
+  // function onClickLogin() {
+  //   setIsRegisterModalOpen(false);
+  //   setIsLoginModalOpen(true);
+  //   toggleModal();
+  // }
 
-  function handleRegisterClick() {
-    setIsLoginModalOpen(false);
-    setIsRegisterModalOpen(true);
-    toggleModal();
-  }
+  // function handleRegisterClick() {
+  //   setIsLoginModalOpen(false);
+  //   setIsRegisterModalOpen(true);
+  //   toggleModal();
+  // }
 
   const handleClose = () => {
     setIsPanelOpen(false);
