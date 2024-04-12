@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import AuthenticatedNav from "./AuthenticatedNav/AuthenticatedNav";
 import UnauthenticatedNav from "./UnauthenticatedNav/UnauthenticatedNav";
 
@@ -15,10 +14,4 @@ export const Navigation = ({
       onClickRegister={handleRegisterClick}
     />
   );
-};
-
-Navigation.propTypes = {
-  handleLoginClick: PropTypes.func.isRequired,
-  handleRegisterClick: PropTypes.func.isRequired,
-  authUser: PropTypes.object.isRequired,
 };

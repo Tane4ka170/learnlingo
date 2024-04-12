@@ -1,8 +1,8 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-import { auth } from "../../firebase/config";
-import toast from "react-hot-toast";
-import { RegisterSchema } from "../../yupSchemas/AuthSchemas";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useState } from 'react';
+import { auth } from '../../firebase/config';
+import toast from 'react-hot-toast';
+import { RegisterSchema } from '../../yupSchemas/AuthSchemas';
 import {
   Description,
   ErrorMessageWrapper,
@@ -10,16 +10,15 @@ import {
   StyledForm,
   SubmitButton,
   Title,
-} from "./Auth.styled";
-import { Formik } from "formik";
-import PropTypes from "prop-types";
+} from './Auth.styled';
+import { Formik } from 'formik';
 
 export const Register = ({ handleClose }) => {
   const [isNameEntered, setNameEntered] = useState(false);
   const [isEmailEntered, setEmailEntered] = useState(false);
   const [isPasswordEntered, setPasswordEntered] = useState(false);
 
-  const handleSubmit = (values) => {
+  const handleSubmit = values => {
     const { email, password } = values;
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -27,7 +26,7 @@ export const Register = ({ handleClose }) => {
         handleClose();
       })
       .catch(() => {
-        toast.error("Apologies, an error occurred. Please try again later!");
+        toast.error('Apologies, an error occurred. Please try again later!');
       });
   };
 
@@ -41,9 +40,9 @@ export const Register = ({ handleClose }) => {
 
       <Formik
         initialValues={{
-          name: "",
-          email: "",
-          password: "",
+          name: '',
+          email: '',
+          password: '',
         }}
         onSubmit={handleSubmit}
         validationSchema={RegisterSchema}
@@ -52,7 +51,7 @@ export const Register = ({ handleClose }) => {
           <StyledForm>
             <InputField
               name="name"
-              placeholder={isNameEntered ? "" : "Name"}
+              placeholder={isNameEntered ? '' : 'Name'}
               onFocus={() => setNameEntered(true)}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -61,7 +60,7 @@ export const Register = ({ handleClose }) => {
             <InputField
               type="email"
               name="email"
-              placeholder={isEmailEntered ? "" : "Email"}
+              placeholder={isEmailEntered ? '' : 'Email'}
               onFocus={() => setEmailEntered(true)}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -70,7 +69,7 @@ export const Register = ({ handleClose }) => {
             <InputField
               type="password"
               name="password"
-              placeholder={isPasswordEntered ? "" : "Password"}
+              placeholder={isPasswordEntered ? '' : 'Password'}
               onFocus={() => setPasswordEntered(true)}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -82,8 +81,4 @@ export const Register = ({ handleClose }) => {
       </Formik>
     </div>
   );
-};
-
-Register.propTypes = {
-  handleClose: PropTypes.func.isRequired,
 };

@@ -1,5 +1,4 @@
 import LogInSvg from "../../../img/icons/log-in-01.svg";
-import PropTypes from "prop-types";
 import {
   LogButton,
   LogIcon,
@@ -10,7 +9,7 @@ import {
   UserSection,
 } from "../AuthenticatedNav/AuthenticatedNav.styled";
 
-const UnauthenticatedNav = ({ handleLoginClick, handleRegisterClick }) => {
+const UnauthenticatedNav = ({ onClickLogin, handleRegisterClick }) => {
   return (
     <>
       <NavList>
@@ -24,7 +23,7 @@ const UnauthenticatedNav = ({ handleLoginClick, handleRegisterClick }) => {
       <UserSection>
         <UserList>
           <li>
-            <LogButton type="button" onClick={handleLoginClick}>
+            <LogButton type="button" onClick={onClickLogin}>
               <LogIcon src={LogInSvg} alt="log in" />
               Log in
             </LogButton>
@@ -41,8 +40,3 @@ const UnauthenticatedNav = ({ handleLoginClick, handleRegisterClick }) => {
 };
 
 export default UnauthenticatedNav;
-
-UnauthenticatedNav.propTypes = {
-  handleLoginClick: PropTypes.func.isRequired,
-  handleRegisterClick: PropTypes.func.isRequired,
-};

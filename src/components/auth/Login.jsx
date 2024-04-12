@@ -73,7 +73,3 @@ export const Login = ({ handleClose }) => {
     </div>
   );
 };
-
-Login.propTypes = {
-  handleClose: PropTypes.func.isRequired,
-};

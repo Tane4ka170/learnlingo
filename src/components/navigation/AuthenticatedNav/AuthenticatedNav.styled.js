@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const NavList = styled.div`
+  display: flex;
   gap: 28px;
   align-items: center;
   justify-content: center;
@@ -9,6 +10,10 @@ export const NavList = styled.div`
   font-size: 16px;
   line-height: 1.25;
   color: ${({ theme }) => theme.primaryBlack};
+
+  & li {
+    list-style: none;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -17,6 +22,7 @@ export const StyledLink = styled(Link)`
   letter-spacing: -0.02em;
   color: ${({ theme }) => theme.primaryBlack};
   align-items: center;
+
   &:hover {
     text-decoration: underline;
     color: ${({ theme }) => theme.primaryYellow};

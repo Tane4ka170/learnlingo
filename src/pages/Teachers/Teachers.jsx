@@ -9,7 +9,6 @@ import {
 } from "../../redux/selectors";
 import { Loader } from "../../components/Loader/Loader";
 import CardList from "../../components/CardList/CardList";
-import PropTypes from "prop-types";
 import { Container, LoadMoreButton } from "./Teachers.styled";
 
 const Teachers = ({ authUser }) => {
@@ -44,9 +43,3 @@ const Teachers = ({ authUser }) => {
   );
 };
 export default Teachers;
-
-Teachers.propTypes = {
-  authUser: PropTypes.shape({
-    uid: PropTypes.string.isRequired,
-  }).isRequired,
-};

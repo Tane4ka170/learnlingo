@@ -1,19 +1,21 @@
 import { useEffect } from "react";
-import { ModalContainer, ModalContent } from "./Modal.styled";
+import { createPortal } from "react-dom";
+import { CloseButton, ModalContainer, ModalContent } from "./Modal.styled";
 import CloseSvg from "../../img/icons/close.svg";
 
-const modalTarget = document.getElementById;
-const Modal = ({ children, togglePanel }) => {
+const modalTarget = document.getElementById("portal");
+
+const Modal = ({ children, toggleModal }) => {
   const onOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
-      togglePanel();
+      toggleModal();
     }
   };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === "Escape") {
-        togglePanel();
+        toggleModal();
       }
     };
     const body = document.querySelector("body");
@@ -24,18 +26,17 @@ const Modal = ({ children, togglePanel }) => {
       body.style.position = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [togglePanel]);
-  return (
-    (
-      <ModalContainer onMouseDown={onOverlayClick}>
-        <ModalContent>
-          <button>
-            <img src={CloseSvg} alt="" />
-          </button>
-          {children}
-        </ModalContent>
-      </ModalContainer>
-    ),
+  }, [toggleModal]);
+
+  return createPortal(
+    <ModalContainer onMouseDown={onOverlayClick}>
+      <ModalContent>
+        <CloseButton onClick={toggleModal}>
+          <img src={CloseSvg} alt="" />
+        </CloseButton>
+        {children}
+      </ModalContent>
+    </ModalContainer>,
     modalTarget
   );
 };

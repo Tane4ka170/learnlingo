@@ -5,11 +5,26 @@ import Home from "./pages/Home/Home";
 import Teachers from "./pages/Teachers/Teachers";
 import Layout from "./components/Layout/Layout";
 import { auth } from "./firebase/config";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PrivateRoute } from "./components/navigation/PrivateRoute";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
-  const [authUser, setAuthUser] = useState(auth.currentUser);
+  const [authUser, setauthUser] = useState(auth.currentUser);
+
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setauthUser(user);
+      } else {
+        setauthUser(null);
+      }
+    });
+    return () => {
+      listen();
+    };
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Layout authUser={authUser} />}>

@@ -5,30 +5,34 @@ import { Navigation } from "../navigation/Navigation";
 import { Header, LayoutContainer, LinkLogo, List, Logo } from "./Layout.styled";
 import UkraineLogo from "../../img/icons/ukraine.svg";
 import Modal from "../Modal/Modal";
+import { Login } from "../auth/Login";
+import { Register } from "../auth/Register";
 
 const Layout = ({ authUser }) => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
-  const togglePanel = () => {
+  const toggleModal = () => {
     setIsPanelOpen((prevState) => !prevState);
   };
 
-  function handleLoginClick() {
+  function onClickLogin() {
     setIsRegisterModalOpen(false);
     setIsLoginModalOpen(true);
-    togglePanel();
+    toggleModal();
   }
+
   function handleRegisterClick() {
     setIsLoginModalOpen(false);
     setIsRegisterModalOpen(true);
-    togglePanel();
+    toggleModal();
   }
 
   const handleClose = () => {
     setIsPanelOpen(false);
   };
+
   return (
     <LayoutContainer>
       <Header>
@@ -44,8 +48,8 @@ const Layout = ({ authUser }) => {
         </List>
         <Navigation
           authUser={authUser}
-          onLoginClick={handleLoginClick}
-          onRegisterClick={handleRegisterClick}
+          onClickLogin={onClickLogin}
+          handleRegisterClick={handleRegisterClick}
         />
       </Header>
       <Suspense>
@@ -54,7 +58,7 @@ const Layout = ({ authUser }) => {
       <Toaster position="top-right" reverseOrder={false} />
 
       {isPanelOpen && (
-        <Modal togglePanel={togglePanel}>
+        <Modal toggleModal={toggleModal}>
           {isLoginModalOpen && <Login handleClose={handleClose} />}
           {isRegisterModalOpen && <Register handleClose={handleClose} />}
         </Modal>

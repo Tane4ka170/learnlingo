@@ -36,6 +36,7 @@ export const AuthenticatedNav = () => {
           <Username>{currentUser.displayName}</Username>
           <li>
             <LogButton onClick={handleLogOUt}>
+              Log out
               <LogIcon src={LogOutSvg} alt="" />
             </LogButton>
           </li>
