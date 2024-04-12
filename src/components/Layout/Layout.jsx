@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Navigation } from '../navigation/Navigation';
+import { Navigation } from '../../components/navigation/Navigation';
 import { Header, LayoutContainer, LinkLogo, List, Logo } from './Layout.styled';
 import UkraineLogo from '../../img/icons/ukraine.svg';
 import Modal from '../Modal/Modal';
