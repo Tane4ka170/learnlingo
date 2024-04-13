@@ -5,6 +5,39 @@ import { addFavorites, deleteFavorite } from '../../redux/favorite/operations';
 import toast from 'react-hot-toast';
 import Modal from 'components/Modal/Modal';
 import BookTrialModal from 'components/BookTrialModal/BookTrialModal';
+import { ReactComponent as Book } from '../../img/icons/book-open.svg';
+import { ReactComponent as Star } from '../../img/icons/star.svg';
+import { FiHeart } from 'react-icons/fi';
+import {
+  CardImage,
+  CardInfoContainer,
+  FavoriteButton,
+  HeartDel,
+  ImageContainer,
+  InfoList,
+  InfoListItem,
+  InfoListItemContent,
+  InfoParagraph,
+  InfoSection,
+  LanguageList,
+  PricePerHour,
+  ReviewComment,
+  ReviewContainer,
+  ReviewList,
+  ReviewRating,
+  ReviewerAvatar,
+  ReviewerInfo,
+  StyledBookTrialButton,
+  StyledButton,
+  StyledDiv,
+  StyledLevelsList,
+  StyledLevelsListItem,
+  StyledList,
+  StyledListItem,
+  StyledParagraph,
+  StyledSpan,
+  TeacherName,
+} from './Card.styled';
 
 const Card = ({ teacher, authUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,7 +80,7 @@ const Card = ({ teacher, authUser }) => {
         );
       }
     } else {
-      toast('You need to log in at first!', {
+      toast('At first, you must log in', {
         icon: '❗',
       });
     }
@@ -55,47 +88,54 @@ const Card = ({ teacher, authUser }) => {
 
   return (
     <>
-      <div>
-        <img
+      <ImageContainer>
+        <CardImage
           src={teacher.avatar_url}
           loading="lazy"
           alt="avatar"
           width="96"
           height="96"
         />
-      </div>
-      <div>
-        <div>
-          <p>Languages</p>
-          <ul>
-            <li>
-              <div> {/* <Book /> Lessons online */}</div>
-            </li>
-            <li>Lessons done: {teacher.lessons_done}</li>
-            <li>
-              <div> {/* <Star /> Rating: {teacher.rating} */}</div>
-            </li>
-            <li>
-              Price / 1 hour: <span>{teacher.price_per_hour}$</span>
-            </li>
+      </ImageContainer>
+      <CardInfoContainer>
+        <InfoSection>
+          <InfoParagraph>Languages</InfoParagraph>
+          <InfoList>
+            <InfoListItem>
+              <InfoListItemContent>
+                {' '}
+                <Book /> Lessons online
+              </InfoListItemContent>
+            </InfoListItem>
+            <InfoListItem>Lessons done: {teacher.lessons_done}</InfoListItem>
+            <InfoListItem>
+              <InfoListItemContent>
+                {' '}
+                <Star /> Rating: {teacher.rating}
+              </InfoListItemContent>
+            </InfoListItem>
+            <InfoListItem>
+              Price / 1 hour:{' '}
+              <PricePerHour>{teacher.price_per_hour}$</PricePerHour>
+            </InfoListItem>
             <li>
               {' '}
-              <button type="button" onClick={onSwitchFavorite}>
-                {/* {isFavorite && authUser ? <HeartDel /> : <Heart />} */}
-              </button>
+              <FavoriteButton type="button" onClick={onSwitchFavorite}>
+                {isFavorite && authUser ? <HeartDel /> : <FiHeart />}
+              </FavoriteButton>
             </li>
-          </ul>
-        </div>
+          </InfoList>
+        </InfoSection>
 
-        <h2>
+        <TeacherName>
           {' '}
           {teacher.name} {teacher.surname}{' '}
-        </h2>
-        <ul>
-          <li>
-            <div>
-              <span>Speaks: &nbsp;</span>
-              <ul>
+        </TeacherName>
+        <StyledList>
+          <StyledListItem>
+            <StyledDiv>
+              <StyledSpan>Speaks: &nbsp;</StyledSpan>
+              <LanguageList>
                 {teacher.languages ? (
                   teacher.languages.map((language, index, array) => (
                     <React.Fragment key={language}>
@@ -106,69 +146,72 @@ const Card = ({ teacher, authUser }) => {
                 ) : (
                   <li>No languages available</li>
                 )}
-              </ul>
-            </div>
-          </li>
-          <li>
-            <span>Lesson info:</span> {teacher.lesson_info}
-          </li>
-          <li>
-            <span>Conditions:</span> {teacher.conditions}
-          </li>
-        </ul>
+              </LanguageList>
+            </StyledDiv>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledSpan>Lesson info:</StyledSpan> {teacher.lesson_info}
+          </StyledListItem>
+          <StyledListItem>
+            <StyledSpan>Conditions:</StyledSpan> {teacher.conditions}
+          </StyledListItem>
+        </StyledList>
         {expandedTeacherId === teacher.id && (
           <div>
-            <p>{teacher.experience}</p>
-            <ul>
+            <StyledParagraph>{teacher.experience}</StyledParagraph>
+            <ReviewList>
               {teacher.reviews ? (
                 teacher.reviews.map((review, index) => (
                   <li key={index}>
-                    <div>
-                      <img
+                    <ReviewContainer>
+                      <ReviewerAvatar
                         src={review.photo}
                         alt="avatar"
                         width="44"
                         height="44"
                         loading="lazy"
                       />
-                      <div>
+                      <ReviewerInfo>
                         <p>{review.reviewer_name}</p>
-                        <div>
-                          {/* <Star /> */}
+                        <ReviewRating>
+                          <Star />
                           <p> {review.reviewer_rating}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <p>{review.comment}</p>
+                        </ReviewRating>
+                      </ReviewerInfo>
+                    </ReviewContainer>
+                    <ReviewComment>{review.comment}</ReviewComment>
                   </li>
                 ))
               ) : (
                 <li>There are no reviews yet</li>
               )}
-            </ul>
+            </ReviewList>
           </div>
         )}
-        <button onClick={() => handleReadMoreClick(teacher.id)}>
+        <StyledButton onClick={() => handleReadMoreClick(teacher.id)}>
           {' '}
           {getButtonText(teacher.id)}
-        </button>
-        <ul>
+        </StyledButton>
+        <StyledLevelsList>
           {teacher.levels ? (
             teacher.levels.map((level, index) => (
-              <li key={index}>
+              <StyledLevelsListItem key={index}>
                 <p>{level}</p>
-              </li>
+              </StyledLevelsListItem>
             ))
           ) : (
             <li>No levels</li>
           )}
-        </ul>
+        </StyledLevelsList>
         {expandedTeacherId === teacher.id && (
-          <button type="button" onClick={() => handleBookTrialClick(teacher)}>
+          <StyledBookTrialButton
+            type="button"
+            onClick={() => handleBookTrialClick(teacher)}
+          >
             Book trial lesson
-          </button>
+          </StyledBookTrialButton>
         )}
-      </div>
+      </CardInfoContainer>
       {isModalOpen && selectedTeacher && (
         <Modal toggleModal={toggleModal}>
           <BookTrialModal teacher={selectedTeacher} close={close} />
