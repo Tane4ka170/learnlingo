@@ -1,15 +1,15 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { child, get, ref } from "firebase/database";
-import { database } from "../../firebase/config";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { get, ref } from 'firebase/database';
+import { database } from '../../firebase/config';
 
 export const fetchTeachersAsync = createAsyncThunk(
-  "teachers/fetchAll",
+  '/teachers/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const teachersRef = ref(database, "teachers");
-      const snapshot = await get(child(teachersRef));
+      const teachersRef = ref(database, 'teachers');
+      const snapshot = await get(teachersRef);
       const teachersData = [];
-      snapshot.forEach((teacherSnapshot) => {
+      snapshot.forEach(teacherSnapshot => {
         teachersData.push({
           ...teacherSnapshot.val(),
           id: teacherSnapshot.key,
@@ -17,7 +17,7 @@ export const fetchTeachersAsync = createAsyncThunk(
       });
       return teachersData;
     } catch (error) {
-      console.error("Error fetching teachers:", error);
+      console.error('Error fetching teachers:', error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -5,8 +5,6 @@ import { CloseButton, ModalContainer, ModalContent } from './Modal.styled';
 import CloseSvg from '../../img/icons/close.svg';
 
 const modalTarget = document.getElementById('portal');
-console.log(modalTarget);
-
 const Modal = ({ children, toggleModal }) => {
   const onOverlayClick = e => {
     if (e.target === e.currentTarget) {
