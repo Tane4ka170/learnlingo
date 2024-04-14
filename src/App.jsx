@@ -31,7 +31,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="teachers" element={<Teachers authUser={authUser} />} />
         <Route
-          path="favorites"
+          path="favorite"
           element={
             <PrivateRoute authUser={authUser}>
               <Favorite authUser={authUser} />

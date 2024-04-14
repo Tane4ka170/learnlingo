@@ -1,14 +1,14 @@
-import { get, getDatabase, onValue, ref, set } from "firebase/database";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { setFavorites } from "./favoriteSlice";
+import { get, getDatabase, onValue, ref, set } from 'firebase/database';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { setFavorites } from './favoriteSlice';
 
-const db = getDatabase();
+const database = getDatabase();
 
 export const addFavorites = createAsyncThunk(
-  "favorites/addFavorite",
+  'favorites/addFavorite',
   async ({ userId, teacher }) => {
     try {
-      const userFavoritesRef = ref(db, `users/${userId}/favorites`);
+      const userFavoritesRef = ref(database, `users/${userId}/favorites`);
       const existingFavorites = (await get(userFavoritesRef)).val() || {};
       const updatedFavorites = {
         ...existingFavorites,
@@ -16,18 +16,18 @@ export const addFavorites = createAsyncThunk(
       };
       await set(userFavoritesRef, updatedFavorites);
     } catch (error) {
-      console.error("Error adding favorite:", error);
+      console.error('Error adding favorite:', error);
       throw error;
     }
   }
 );
 
 export const fetchFavorites = createAsyncThunk(
-  "favorites/fetchFavorites",
+  'favorites/fetchFavorites',
   async (userId, { dispatch }) => {
     try {
-      const userFavoritesRef = ref(db, `users/${userId}/favorites`);
-      onValue(userFavoritesRef, (snapshot) => {
+      const userFavoritesRef = ref(database, `users/${userId}/favorites`);
+      onValue(userFavoritesRef, snapshot => {
         if (snapshot.exists()) {
           const favoritesData = snapshot.val();
           const favoritesArray = Object.values(favoritesData);
@@ -37,22 +37,22 @@ export const fetchFavorites = createAsyncThunk(
         }
       });
     } catch (error) {
-      console.error("Error fetching favorites:", error);
+      console.error('Error fetching favorites:', error);
       throw error;
     }
   }
 );
 
 export const deleteFavorite = createAsyncThunk(
-  "favorites/deleteFavorite",
+  'favorites/deleteFavorite',
   async ({ userId, teacherId }) => {
     try {
-      const userFavoritesRef = ref(db, `users/${userId}/favorites`);
+      const userFavoritesRef = ref(database, `users/${userId}/favorites`);
       const existingFavorites = (await get(userFavoritesRef)).val() || {};
       delete existingFavorites[teacherId];
       await set(userFavoritesRef, existingFavorites);
     } catch (error) {
-      console.error("Error deleting favorite:", error);
+      console.error('Error deleting favorite:', error);
       throw error;
     }
   }

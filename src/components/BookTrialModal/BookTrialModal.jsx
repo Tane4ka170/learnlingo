@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { BookingLessonSchema } from 'yupSchemas/BookingLessonSchema';
@@ -85,11 +85,7 @@ const BookTrialModal = ({ teacher, handleClose }) => {
                 Lesson for kids
               </StyledLabel>
               <StyledLabel>
-                <RadioInput
-                  type="radio"
-                  name="picked"
-                  value="Living abroadwo"
-                />
+                <RadioInput type="radio" name="picked" value="Living abroad" />
                 Living abroad
               </StyledLabel>
               <StyledLabel>
