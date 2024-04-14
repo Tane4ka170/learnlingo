@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
-import { addFavorites, deleteFavorite } from '../../redux/favorite/operations';
+// import { addFavorites, deleteFavorite } from '../../redux/favorite/operations';
 import toast from 'react-hot-toast';
 import Modal from 'components/Modal/Modal';
 import BookTrialModal from 'components/BookTrialModal/BookTrialModal';
@@ -38,6 +38,10 @@ import {
   StyledSpan,
   TeacherName,
 } from './Card.styled';
+import {
+  addFavorite,
+  removeFavorite,
+} from '../../redux/favorite/favoriteSlice';
 
 const Card = ({ teacher, authUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -73,14 +77,12 @@ const Card = ({ teacher, authUser }) => {
   const onSwitchFavorite = () => {
     if (authUser) {
       if (!isFavorite) {
-        dispatch(addFavorites({ userId: authUser.uid, teacher }));
+        dispatch(addFavorite(teacher));
       } else {
-        dispatch(
-          deleteFavorite({ userId: authUser.uid, teacherId: teacher.id })
-        );
+        dispatch(removeFavorite(teacher.id));
       }
     } else {
-      toast('At first, you must log in', {
+      toast.error('At first, you must log in', {
         icon: '❗',
       });
     }

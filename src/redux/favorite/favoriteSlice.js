@@ -1,48 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { addFavorites, deleteFavorite } from "./operations";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  items: [],
-  isLoading: false,
-  error: null,
-};
-
-const isPending = (state) => {
-  state.isLoading = true;
-};
-
-const isRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
+  favorite: [],
 };
 
 export const favoritesSlice = createSlice({
-  name: "favorites",
+  name: 'favorite',
   initialState,
   reducers: {
-    setFavorites: (state, action) => {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
+    addFavorite(state, { payload }) {
+      state.favorite.push(payload);
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(addFavorites.rejected, isRejected)
-      .addCase(addFavorites.pending, isPending)
-      .addCase(addFavorites.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.items.push(action.payload);
-      })
-      .addCase(deleteFavorite.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.items = state.items.filter(
-          (item) => item.id !== action.payload?.teacherId
-        );
-      })
-      .addCase(deleteFavorite.rejected, isRejected);
+    removeFavorite(state, { payload }) {
+      state.favorite = state.favorite.filter(el => el !== payload);
+    },
   },
 });
 
+export const { addFavorite, removeFavorite } = favoritesSlice.actions;
+
 export const favoritesReducer = favoritesSlice.reducer;
-export const { setFavorites } = favoritesSlice.actions;

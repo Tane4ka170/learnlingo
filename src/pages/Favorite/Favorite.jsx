@@ -1,34 +1,61 @@
 import CardList from 'components/CardList/CardList';
 import { Loader } from 'components/Loader/Loader';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchFavorites } from '../../redux/favorite/operations';
-import {
-  selectErrorFav,
-  selectFavorites,
-  selectIsLoadingFav,
-} from '../../redux/selectors';
+import { fetchTeachersAsync } from '../../redux/teachers/operations';
 
 const Favorite = ({ authUser }) => {
   const dispatch = useDispatch();
-  const favList = useSelector(selectFavorites);
-  const loadingFavs = useSelector(selectIsLoadingFav);
-  const favError = useSelector(selectErrorFav);
+
+  const isLoadingTeachers = useSelector(state => state.teachers.isLoading);
+  const teachers = useSelector(state => state.teachers.teachers);
+  const favoriteList = useSelector(state => state.favorite.favorite);
+
+  const [loadedTeachersCount, setLoadedTeachersCount] = useState(4);
+
+  const favoriteTeachers = teachers?.filter(teacher =>
+    favoriteList.includes(teacher.id)
+  );
+  const noFavoriteTeachers =
+    !isLoadingTeachers && (!favoriteTeachers || favoriteTeachers.length === 0);
 
   useEffect(() => {
-    if (authUser && authUser.uid) {
-      dispatch(fetchFavorites(authUser.uid));
-    }
-  }, [dispatch, authUser]);
+    dispatch(fetchTeachersAsync());
+  }, [dispatch]);
+
+  const handleLoadMore = () => {
+    setLoadedTeachersCount(prevCount => prevCount + 4);
+  };
 
   return (
     <div>
-      {loadingFavs && !favError && <Loader />}
-      {favList.length > 0 ? (
-        <CardList teachers={favList} authUser={authUser} />
-      ) : (
-        <p>Favorite teachers haven't been selected yet</p>
+      {isLoadingTeachers && (
+        <div>
+          <Loader />
+        </div>
       )}
+
+      {noFavoriteTeachers && (
+        <div>
+          <p>There are no favorite teachers yet</p>
+        </div>
+      )}
+
+      {favoriteTeachers && favoriteTeachers.length > 0 && (
+        <ul>
+          {favoriteTeachers.slice(0, loadedTeachersCount).map(teacher => (
+            <CardList key={teacher.id} teacher={teacher} authUser={authUser} />
+          ))}
+        </ul>
+      )}
+
+      {favoriteTeachers &&
+        favoriteTeachers.length > loadedTeachersCount &&
+        !isLoadingTeachers && (
+          <div>
+            <button text="Load more" onClick={handleLoadMore} />
+          </div>
+        )}
     </div>
   );
 };

@@ -29,9 +29,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout authUser={authUser} />}>
         <Route index element={<Home />} />
-        <Route path="teachers" element={<Teachers authUser={authUser} />} />
+        <Route path="/teachers" element={<Teachers authUser={authUser} />} />
         <Route
-          path="favorite"
+          path="/favorites"
           element={
             <PrivateRoute authUser={authUser}>
               <Favorite authUser={authUser} />

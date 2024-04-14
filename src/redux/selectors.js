@@ -4,7 +4,7 @@ export const selectIsLoading = state => state.teachers.isLoading;
 
 export const selectError = state => state.teachers.error;
 
-export const selectFavorites = state => state.favorites.items;
+export const selectFavorites = state => state.favorite.favorite;
 
 export const selectIsLoadingFav = state => state.favorites.isLoading;
 
