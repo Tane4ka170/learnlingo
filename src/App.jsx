@@ -1,13 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-
-import Favorite from './pages/Favorite/Favorite';
-import Home from './pages/Home/Home';
-import Teachers from './pages/Teachers/Teachers';
-import Layout from './components/Layout/Layout';
 import { auth } from './firebase/config';
-import { useEffect, useState } from 'react';
-import { PrivateRoute } from './components/Nav/PrivateRoute';
+import { lazy, useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
+
+import Layout from './components/Layout/Layout';
+import { PrivateRoute } from './components/Nav/PrivateRoute';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const Teachers = lazy(() => import('./pages/Teachers/Teachers'));
+const Favorite = lazy(() => import('./pages/Favorite/Favorite'));
 
 function App() {
   const [authUser, setAuthUser] = useState(auth.currentUser);
