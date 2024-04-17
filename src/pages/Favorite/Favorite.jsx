@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTeachersAsync } from '../../redux/teachers/operations';
 import { Loader } from 'components/Loader/Loader';
+// import Card from 'components/Card/Card';
+import CardList from 'components/CardList/CardList';
 import Card from 'components/Card/Card';
+import { FavoritesContainer } from './Favorite.styled';
 
 const Favorite = ({ authUser }) => {
   const dispatch = useDispatch();
@@ -21,6 +24,7 @@ const Favorite = ({ authUser }) => {
     teachers?.length > 0
       ? teachers.filter(teacher => favoriteList.includes(teacher.id))
       : [];
+
   const noFavoriteTeachers =
     !isLoadingTeachers && (!favoriteTeachers || favoriteTeachers.length === 0);
 
@@ -37,27 +41,33 @@ const Favorite = ({ authUser }) => {
   }
 
   return (
-    <div>
-      {noFavoriteTeachers && (
+    <FavoritesContainer>
+      {isLoadingTeachers || teachers.length === 0 ? (
+        <Loader />
+      ) : (
         <div>
-          <p>There are no favorite teachers yet</p>
+          {noFavoriteTeachers && (
+            <div>
+              <p>You haven't added any teachers to your favorites yet</p>
+            </div>
+          )}
+          {favoriteTeachers && favoriteTeachers.length > 0 && (
+            <ul>
+              {favoriteTeachers.slice(0, loadedTeachersCount).map(teacher => (
+                <Card key={teacher.id} teacher={teacher} authUser={authUser} />
+              ))}
+            </ul>
+          )}
+          {favoriteTeachers &&
+            favoriteTeachers.length > loadedTeachersCount &&
+            !isLoadingTeachers && (
+              <div>
+                <button text="Load more" onClick={handleLoadMore} />
+              </div>
+            )}
         </div>
       )}
-      {favoriteTeachers && favoriteTeachers.length > 0 && (
-        <ul>
-          {favoriteTeachers.slice(0, loadedTeachersCount).map(teacher => (
-            <Card key={teacher.id} teacher={teacher} authUser={authUser} />
-          ))}
-        </ul>
-      )}
-      {favoriteTeachers &&
-        favoriteTeachers.length > loadedTeachersCount &&
-        !isLoadingTeachers && (
-          <div>
-            <button text="Load more" onClick={handleLoadMore} />
-          </div>
-        )}
-    </div>
+    </FavoritesContainer>
   );
 };
 

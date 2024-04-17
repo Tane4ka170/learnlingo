@@ -70,21 +70,19 @@ const Card = ({ teacher, authUser }) => {
   const getButtonText = teacherId =>
     expandedTeacherId === teacherId ? 'Hide more' : 'Read More';
 
-  const isFavorite =
-    favorites &&
-    favorites.some(favTeacher => favTeacher && favTeacher.id === teacher.id);
+  const isFavorite = favorites.includes(teacher.id);
 
   const onSwitchFavorite = () => {
-    if (authUser) {
-      if (!isFavorite) {
-        dispatch(addFavorite(teacher));
-      } else {
-        dispatch(removeFavorite(teacher.id));
-      }
-    } else {
+    if (!authUser) {
       toast.error('At first, you must log in', {
         icon: '❗',
       });
+      return;
+    }
+    if (isFavorite) {
+      dispatch(removeFavorite(teacher.id));
+    } else {
+      dispatch(addFavorite(teacher.id));
     }
   };
 
@@ -122,9 +120,16 @@ const Card = ({ teacher, authUser }) => {
             </InfoListItem>
             <li>
               {' '}
-              <FavoriteButton type="button" onClick={onSwitchFavorite}>
-                {isFavorite && authUser ? <HeartDel /> : <FiHeart />}
-              </FavoriteButton>
+              {isFavorite && authUser ? (
+                <FavoriteButton type="button" onClick={onSwitchFavorite}>
+                  <HeartDel />
+                </FavoriteButton>
+              ) : (
+                <FavoriteButton type="button" onClick={onSwitchFavorite}>
+                  {' '}
+                  <FiHeart />{' '}
+                </FavoriteButton>
+              )}
             </li>
           </InfoList>
         </InfoSection>
