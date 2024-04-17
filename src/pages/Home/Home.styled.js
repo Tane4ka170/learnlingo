@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import rectangleYellow3 from "../../img/rectangle-yellow3.png";
-import rectangleYellow from "../../img/rectangle-yellow.png";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import rectangleYellow3 from '../../img/rectangle-yellow3.png';
+import rectangleYellow from '../../img/rectangle-yellow.png';
 
 export const Container = styled.div`
   width: 100%;
@@ -89,7 +89,7 @@ export const CustomLink = styled(Link)`
 
   &:hover {
     color: ${({ theme }) => theme.primaryYellow};
-    background: ${({ theme }) => theme.primaryBlack};
+    background: ${({ theme }) => theme.lightYellow};
     transition: all 0.3s ease;
   }
 

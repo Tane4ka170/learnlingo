@@ -1,9 +1,11 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
-import { LoginSchema } from '../../yupSchemas/AuthSchemas';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import toast from 'react-hot-toast';
-import { auth } from '../../firebase/config';
 import { Formik } from 'formik';
+
+import { LoginSchema } from '../../yupSchemas/AuthSchemas';
+import { auth } from '../../firebase/config';
+
 import {
   Description,
   ErrorMessageWrapper,

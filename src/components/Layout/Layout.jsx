@@ -1,12 +1,14 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
+
 import { Navigation } from '../Nav/Navigation';
-import { Header, LayoutContainer, LinkLogo, List, Logo } from './Layout.styled';
-import UkraineLogo from '../../img/icons/ukraine.svg';
 import Modal from '../Modal/Modal';
 import { Login } from '../auth/Login';
 import { Register } from '../auth/Register';
+
+import { Header, LayoutContainer, LinkLogo, List, Logo } from './Layout.styled';
+import UkraineLogo from '../../img/icons/ukraine.svg';
 
 const Layout = ({ authUser }) => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);

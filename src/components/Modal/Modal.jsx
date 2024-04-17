@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+
 import { CloseButton, ModalContainer, ModalContent } from './Modal.styled';
 import CloseSvg from '../../img/icons/close.svg';
 

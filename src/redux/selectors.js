@@ -9,12 +9,3 @@ export const selectFavorites = state => state.favorite.favorite;
 export const selectIsLoadingFav = state => state.favorites.isLoading;
 
 export const selectErrorFav = state => state.favorites.error;
-
-// export {
-//   selectTeachers,
-//   selectIsLoading,
-//   selectError,
-//   selectFavorites,
-//   selectIsLoadingFav,
-//   selectErrorFav,
-// };

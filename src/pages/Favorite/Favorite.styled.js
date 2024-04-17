@@ -7,3 +7,11 @@ export const FavoritesContainer = styled.div`
   align-items: center;
   background-color: #f8f8f8;
 `;
+
+export const Text = styled.p`
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  margin-top: 40px;
+  text-align: center;
+`;

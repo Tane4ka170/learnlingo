@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const NavList = styled.div`
   display: flex;
@@ -63,22 +63,6 @@ export const LogButton = styled.button`
     text-decoration: underline;
     color: #2b2e35;
   }
-`;
-
-export const Username = styled.li`
-  border-radius: 12px;
-  padding: 14px 14px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.25;
-  border-radius: 12px;
-  border: 1px solid ${({ theme }) => theme.primaryYellow};
-`;
-
-export const LogIcon = styled.img`
-  width: 20px;
-  height: 20px;
-  stroke: ${({ theme }) => theme.primaryYellow};
 `;
 
 export const RegisterButton = styled.button`

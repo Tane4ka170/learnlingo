@@ -1,13 +1,12 @@
-import LogInSvg from "../../../img/icons/log-in-01.svg";
+import { FiLogIn } from 'react-icons/fi';
 import {
   LogButton,
-  LogIcon,
   NavList,
   RegisterButton,
   StyledLink,
   UserList,
   UserSection,
-} from "../AuthenticatedNav/AuthenticatedNav.styled";
+} from '../AuthenticatedNav/AuthenticatedNav.styled';
 
 const UnauthenticatedNav = ({ onClickLogin, handleRegisterClick }) => {
   return (
@@ -24,7 +23,7 @@ const UnauthenticatedNav = ({ onClickLogin, handleRegisterClick }) => {
         <UserList>
           <li>
             <LogButton type="button" onClick={onClickLogin}>
-              <LogIcon src={LogInSvg} alt="log in" />
+              <FiLogIn size="20px" color="#F4C550" />
               Log in
             </LogButton>
           </li>

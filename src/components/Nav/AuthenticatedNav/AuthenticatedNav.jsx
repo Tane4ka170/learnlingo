@@ -1,19 +1,16 @@
-import LogOutSvg from "../../../img/icons/log-out.svg";
-import { auth } from "../../../firebase/config";
-import { signOut } from "firebase/auth";
+import { auth } from '../../../firebase/config';
+import { signOut } from 'firebase/auth';
+
 import {
   LogButton,
-  LogIcon,
   NavList,
   StyledLink,
   UserList,
   UserSection,
-  Username,
-} from "./AuthenticatedNav.styled";
+} from './AuthenticatedNav.styled';
+import { FiLogOut } from 'react-icons/fi';
 
 export const AuthenticatedNav = () => {
-  const currentUser = auth.currentUser;
-
   const handleLogOUt = () => {
     signOut(auth);
   };
@@ -33,11 +30,10 @@ export const AuthenticatedNav = () => {
       </NavList>
       <UserSection>
         <UserList>
-          <Username>{currentUser.displayName}</Username>
           <li>
             <LogButton onClick={handleLogOUt}>
+              <FiLogOut size="20px" color="#F4C550" />
               Log out
-              <LogIcon src={LogOutSvg} alt="" />
             </LogButton>
           </li>
         </UserList>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { fetchTeachersAsync } from '../../redux/teachers/operations';
-// import { fetchFavorites } from "../../redux/favorite/operations";
 import {
   selectError,
   selectIsLoading,
@@ -9,6 +9,7 @@ import {
 } from '../../redux/selectors';
 import { Loader } from '../../components/Loader/Loader';
 import CardList from '../../components/CardList/CardList';
+
 import { Container, LoadMoreButton } from './Teachers.styled';
 
 const Teachers = ({ authUser }) => {

@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFavorites } from '../../redux/selectors';
-// import { addFavorites, deleteFavorite } from '../../redux/favorite/operations';
 import toast from 'react-hot-toast';
+
+import { selectFavorites } from '../../redux/selectors';
+import {
+  addFavorite,
+  removeFavorite,
+} from '../../redux/favorite/favoriteSlice';
+
 import Modal from 'components/Modal/Modal';
 import BookTrialModal from 'components/BookTrialModal/BookTrialModal';
+
 import { ReactComponent as Book } from '../../img/icons/book-open.svg';
 import { ReactComponent as Star } from '../../img/icons/star.svg';
 import { FiHeart } from 'react-icons/fi';
@@ -38,10 +44,6 @@ import {
   StyledSpan,
   TeacherName,
 } from './Card.styled';
-import {
-  addFavorite,
-  removeFavorite,
-} from '../../redux/favorite/favoriteSlice';
 
 const Card = ({ teacher, authUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -172,7 +174,7 @@ const Card = ({ teacher, authUser }) => {
                   <li key={index}>
                     <ReviewContainer>
                       <ReviewerAvatar
-                        src={review.photo}
+                        src={`https://picsum.photos/seed/${Math.random()}/200`}
                         alt="avatar"
                         width="44"
                         height="44"

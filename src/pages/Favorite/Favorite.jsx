@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { fetchTeachersAsync } from '../../redux/teachers/operations';
 import { Loader } from 'components/Loader/Loader';
-// import Card from 'components/Card/Card';
 import CardList from 'components/CardList/CardList';
-import Card from 'components/Card/Card';
-import { FavoritesContainer } from './Favorite.styled';
+
+import { FavoritesContainer, Text } from './Favorite.styled';
+import { StyledButton } from 'components/Card/Card.styled';
 
 const Favorite = ({ authUser }) => {
   const dispatch = useDispatch();
@@ -42,30 +43,23 @@ const Favorite = ({ authUser }) => {
 
   return (
     <FavoritesContainer>
-      {isLoadingTeachers || teachers.length === 0 ? (
-        <Loader />
-      ) : (
+      {noFavoriteTeachers && (
         <div>
-          {noFavoriteTeachers && (
+          <Text>You haven't added any teachers to your favorites yet</Text>
+        </div>
+      )}
+      {favoriteTeachers.length > 0 && (
+        <>
+          <CardList
+            teachers={favoriteTeachers.slice(0, loadedTeachersCount)}
+            authUser={authUser}
+          />
+          {favoriteTeachers.length > loadedTeachersCount && (
             <div>
-              <p>You haven't added any teachers to your favorites yet</p>
+              <StyledButton onClick={handleLoadMore}>Load more</StyledButton>
             </div>
           )}
-          {favoriteTeachers && favoriteTeachers.length > 0 && (
-            <ul>
-              {favoriteTeachers.slice(0, loadedTeachersCount).map(teacher => (
-                <Card key={teacher.id} teacher={teacher} authUser={authUser} />
-              ))}
-            </ul>
-          )}
-          {favoriteTeachers &&
-            favoriteTeachers.length > loadedTeachersCount &&
-            !isLoadingTeachers && (
-              <div>
-                <button text="Load more" onClick={handleLoadMore} />
-              </div>
-            )}
-        </div>
+        </>
       )}
     </FavoritesContainer>
   );

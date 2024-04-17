@@ -1,8 +1,11 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
-import { auth } from '../../firebase/config';
 import toast from 'react-hot-toast';
+import { Formik } from 'formik';
+
+import { auth } from '../../firebase/config';
 import { RegisterSchema } from '../../yupSchemas/AuthSchemas';
+
 import {
   Description,
   ErrorMessageWrapper,
@@ -11,7 +14,6 @@ import {
   SubmitButton,
   Title,
 } from './Auth.styled';
-import { Formik } from 'formik';
 
 export const Register = ({ handleClose }) => {
   const [isNameEntered, setNameEntered] = useState(false);
