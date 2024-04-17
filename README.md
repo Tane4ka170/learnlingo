@@ -54,3 +54,8 @@ page.
 Upon completion, the project will be deployed on third-party hosting, with the
 code repository hosted on GitHub. The README.md file in the repository will
 outline project details, core technologies, layout, and specifications.
+
+## Additional Materials
+
+- [Mockup](https://www.figma.com/file/dewf5jVviSTuWMMyU3d8Mc/Learn-Lingo?type=design&node-id=0-1&mode=design)
+- [Technical Specification](https://docs.google.com/document/d/1ZB_MFgnnJj7t7OXtv5hESSwY6xRgVoACZKzgZczWc3Y/edit)
