@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import CardList from 'components/CardList/CardList';
 
 import { FavoritesContainer, Text } from './Favorite.styled';
-import { StyledButton } from 'components/Card/Card.styled';
+import { LoadMoreButton } from 'pages/Teachers/Teachers.styled';
 
 const Favorite = ({ authUser }) => {
   const dispatch = useDispatch();
@@ -56,7 +56,9 @@ const Favorite = ({ authUser }) => {
           />
           {favoriteTeachers.length > loadedTeachersCount && (
             <div>
-              <StyledButton onClick={handleLoadMore}>Load more</StyledButton>
+              <LoadMoreButton onClick={handleLoadMore}>
+                Load more
+              </LoadMoreButton>
             </div>
           )}
         </>
