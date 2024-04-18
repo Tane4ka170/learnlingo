@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/learnlingo/static/css/main.cd2e038f.css",
-    "main.js": "/learnlingo/static/js/main.a61d64c9.js",
+    "main.js": "/learnlingo/static/js/main.441d2a79.js",
     "static/js/818.ee20ca28.chunk.js": "/learnlingo/static/js/818.ee20ca28.chunk.js",
     "static/js/287.4c61019f.chunk.js": "/learnlingo/static/js/287.4c61019f.chunk.js",
     "static/js/549.6c4a4209.chunk.js": "/learnlingo/static/js/549.6c4a4209.chunk.js",
     "static/js/137.3314258f.chunk.js": "/learnlingo/static/js/137.3314258f.chunk.js",
-    "static/js/210.ceda6d29.chunk.js": "/learnlingo/static/js/210.ceda6d29.chunk.js",
+    "static/js/210.8a551bbc.chunk.js": "/learnlingo/static/js/210.8a551bbc.chunk.js",
     "static/media/girl.svg": "/learnlingo/static/media/girl.185dee334a8a98a1083cb04a4353cb67.svg",
     "static/media/iMac-yellow.svg": "/learnlingo/static/media/iMac-yellow.44161f5b1543242e79ab1df392ac44ab.svg",
     "index.html": "/learnlingo/index.html",
@@ -15,15 +15,15 @@
     "static/media/ukraine.svg": "/learnlingo/static/media/ukraine.b46d9da2bfad7002340ef8424027603b.svg",
     "static/media/close.svg": "/learnlingo/static/media/close.79c2124edd945aaf110064907aeca72b.svg",
     "main.cd2e038f.css.map": "/learnlingo/static/css/main.cd2e038f.css.map",
-    "main.a61d64c9.js.map": "/learnlingo/static/js/main.a61d64c9.js.map",
+    "main.441d2a79.js.map": "/learnlingo/static/js/main.441d2a79.js.map",
     "818.ee20ca28.chunk.js.map": "/learnlingo/static/js/818.ee20ca28.chunk.js.map",
     "287.4c61019f.chunk.js.map": "/learnlingo/static/js/287.4c61019f.chunk.js.map",
     "549.6c4a4209.chunk.js.map": "/learnlingo/static/js/549.6c4a4209.chunk.js.map",
     "137.3314258f.chunk.js.map": "/learnlingo/static/js/137.3314258f.chunk.js.map",
-    "210.ceda6d29.chunk.js.map": "/learnlingo/static/js/210.ceda6d29.chunk.js.map"
+    "210.8a551bbc.chunk.js.map": "/learnlingo/static/js/210.8a551bbc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.a61d64c9.js"
+    "static/js/main.441d2a79.js"
   ]
 }
