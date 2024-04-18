@@ -9,23 +9,39 @@ import {
   UserSection,
 } from './AuthenticatedNav.styled';
 import { FiLogOut } from 'react-icons/fi';
+import { useLocation } from 'react-router-dom';
 
 export const AuthenticatedNav = () => {
   const handleLogOUt = () => {
     signOut(auth);
   };
-
+  const location = useLocation();
   return (
     <>
       <NavList>
         <li>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink
+            to="/"
+            className={location.pathname === '/' ? 'active' : ''}
+          >
+            Home
+          </StyledLink>
         </li>
         <li>
-          <StyledLink to="/teachers">Teachers</StyledLink>
+          <StyledLink
+            to="/teachers"
+            className={location.pathname === '/teachers' ? 'active' : ''}
+          >
+            Teachers
+          </StyledLink>
         </li>
         <li>
-          <StyledLink to="/favorites">Favorites</StyledLink>
+          <StyledLink
+            to="/favorites"
+            className={location.pathname === '/favorites' ? 'active' : ''}
+          >
+            Favorites
+          </StyledLink>
         </li>
       </NavList>
       <UserSection>

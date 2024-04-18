@@ -7,16 +7,28 @@ import {
   UserList,
   UserSection,
 } from '../AuthenticatedNav/AuthenticatedNav.styled';
+import { useLocation } from 'react-router-dom';
 
 const UnauthenticatedNav = ({ onClickLogin, handleRegisterClick }) => {
+  const location = useLocation();
   return (
     <>
       <NavList>
         <li>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink
+            to="/"
+            className={location.pathname === '/' ? 'active' : ''}
+          >
+            Home
+          </StyledLink>
         </li>
         <li>
-          <StyledLink to="/teachers">Teachers</StyledLink>
+          <StyledLink
+            to="/teachers"
+            className={location.pathname === '/teachers' ? 'active' : ''}
+          >
+            Teachers
+          </StyledLink>
         </li>
       </NavList>
       <UserSection>

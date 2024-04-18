@@ -23,6 +23,11 @@ export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.primaryBlack};
   align-items: center;
 
+  &.active {
+    text-decoration: underline;
+    color: ${({ theme }) => theme.primaryYellow};
+  }
+
   &:hover {
     text-decoration: underline;
     color: ${({ theme }) => theme.primaryYellow};
