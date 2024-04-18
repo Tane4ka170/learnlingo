@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const LayoutContainer = styled.div`
   min-width: 320px;
   max-width: 1440px;
   padding-top: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
   margin: 0 auto;
 `;
 

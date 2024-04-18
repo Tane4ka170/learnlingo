@@ -5,7 +5,7 @@ import { fetchTeachersAsync } from '../../redux/teachers/operations';
 import { Loader } from 'components/Loader/Loader';
 import CardList from 'components/CardList/CardList';
 
-import { FavoritesContainer, Text } from './Favorite.styled';
+import { FavoritesContainer, FavoritesRoot, Text } from './Favorite.styled';
 import { LoadMoreButton } from 'pages/Teachers/Teachers.styled';
 
 const Favorite = ({ authUser }) => {
@@ -42,28 +42,26 @@ const Favorite = ({ authUser }) => {
   }
 
   return (
-    <FavoritesContainer>
-      {noFavoriteTeachers && (
-        <div>
+    <FavoritesRoot>
+      <FavoritesContainer>
+        {noFavoriteTeachers && (
           <Text>You haven't added any teachers to your favorites yet</Text>
-        </div>
-      )}
-      {favoriteTeachers.length > 0 && (
-        <>
-          <CardList
-            teachers={favoriteTeachers.slice(0, loadedTeachersCount)}
-            authUser={authUser}
-          />
-          {favoriteTeachers.length > loadedTeachersCount && (
-            <div>
+        )}
+        {favoriteTeachers.length > 0 && (
+          <>
+            <CardList
+              teachers={favoriteTeachers.slice(0, loadedTeachersCount)}
+              authUser={authUser}
+            />
+            {favoriteTeachers.length > loadedTeachersCount && (
               <LoadMoreButton onClick={handleLoadMore}>
                 Load more
               </LoadMoreButton>
-            </div>
-          )}
-        </>
-      )}
-    </FavoritesContainer>
+            )}
+          </>
+        )}
+      </FavoritesContainer>
+    </FavoritesRoot>
   );
 };
 
