@@ -13,7 +13,6 @@ import BookTrialModal from 'components/BookTrialModal/BookTrialModal';
 
 import { ReactComponent as Book } from '../../img/icons/book-open.svg';
 import { ReactComponent as Star } from '../../img/icons/star.svg';
-import { FiHeart } from 'react-icons/fi';
 import {
   CardImage,
   CardInfoContainer,

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f8f8f8;
+  padding-top: 20px;
 `;
 
 export const LoadMoreButton = styled.button`

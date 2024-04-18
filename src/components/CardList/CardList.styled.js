@@ -1,6 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const List = styled.ul`
+  display: flex;
+  mask-type: 28px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 53px;
+  }
   display: flex;
   mask-type: 28px;
   flex-direction: column;
