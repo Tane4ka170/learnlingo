@@ -18,6 +18,7 @@ import {
   CardImage,
   CardInfoContainer,
   FavoriteButton,
+  Heart,
   HeartDel,
   ImageContainer,
   InfoList,
@@ -129,7 +130,7 @@ const Card = ({ teacher, authUser }) => {
               ) : (
                 <FavoriteButton type="button" onClick={onSwitchFavorite}>
                   {' '}
-                  <FiHeart />{' '}
+                  <Heart />{' '}
                 </FavoriteButton>
               )}
             </li>
