@@ -2,6 +2,8 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 
+console.log(process.env.REACT_APP_FIREBASE_API_KEY);
+
 const firebaseConfig = {
   apiKey: 'AIzaSyAzbjN91v8IWAIkQi9j2kP7PaXuCofX6xk',
   authDomain: 'learnlingo-56b2c.firebaseapp.com',
