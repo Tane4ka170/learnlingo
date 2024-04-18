@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   display: flex;
-  mask-type: 28px;
+  margin-top: 28px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,6 @@ export const List = styled.ul`
     margin-top: 53px;
   }
   display: flex;
-  mask-type: 28px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

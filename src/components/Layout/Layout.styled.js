@@ -15,15 +15,18 @@ export const Header = styled.header`
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
+  text-align: center;
   justify-content: center;
   margin-bottom: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   @media screen and (min-width: 768px) {
     max-width: 1184px;
     margin: 0 auto;
     justify-content: space-between;
     gap: 0px;
-    margin-bottom: 0;
+    margin-bottom: 30px;
   }
 `;
 
