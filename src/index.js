@@ -11,7 +11,7 @@ import { GlobalStyle } from './GlobalStyle.js';
 import { ThemeProvider } from 'styled-components';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter basename="/">
+  <BrowserRouter basename="/learnlingo">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
