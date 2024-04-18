@@ -9,7 +9,7 @@ export const ModalContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Header = styled.div`
+export const Header = styled.h2`
   font-weight: 500;
   font-size: 40px;
   line-height: 1.2;
@@ -20,7 +20,7 @@ export const Header = styled.div`
 export const Paragraph = styled.p`
   font-weight: 400;
   font-size: 16px;
-  line-height: 1.37;
+  line-height: 1.5;
   color: rgba(18, 20, 23, 0.8);
   margin-bottom: 20px;
 `;
@@ -55,10 +55,11 @@ export const TeacherName = styled.p`
 `;
 
 export const QuestionTitle = styled.h3`
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.33;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
   margin-top: 40px;
+  margin-bottom: 20px;
 `;
 
 export const StyledForm = styled(Form)`
@@ -81,6 +82,7 @@ export const StyledLabel = styled.label`
   color: #000;
   font-size: 16px;
   align-items: center;
+  font-weight: 400;
 `;
 
 export const RadioInput = styled(Field)`
@@ -127,11 +129,18 @@ export const ErrorText = styled(ErrorMessage)`
 `;
 
 export const StyledInput = styled(Field)`
-  border: 1px solid rgba(18, 20, 23, 0.1);
-  border-radius: 12px;
+  display: flex;
   padding: 16px 18px;
-  height: 54px;
+  justify-content: center;
+  align-items: center;
+
   width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 
   &::placeholder {
     color: ${({ theme }) => theme.primaryBlack};
@@ -139,14 +148,13 @@ export const StyledInput = styled(Field)`
 
   &:hover {
     border-color: ${({ theme }) => theme.primaryYellow};
+    outline: ${({ theme }) => theme.primaryYellow};
   }
 
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.primaryYellow};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.primaryFocusShadow};
   }
-
   @media screen and (min-width: 768px) {
     width: 438px;
   }
@@ -155,13 +163,13 @@ export const StyledInput = styled(Field)`
 export const StyledButton = styled.button`
   margin-top: 22px;
   border-radius: 12px;
-  padding: 16px;
+  padding: 16px 24px;
   width: 100%;
   height: 60px;
   background: ${({ theme }) => theme.primaryYellow};
   font-weight: 700;
   font-size: 18px;
-  line-height: 1.56;
+  line-height: 1.2;
   color: ${({ theme }) => theme.primaryBlack};
   transition: background-color 0.3s ease;
 
